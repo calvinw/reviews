@@ -8,6 +8,7 @@ MD_SOURCES = \
   ma321-quiz4.qmd \
 	ma321-quiz4-review.qmd \
 	ma321-quiz4-review-solutions.qmd \
+  ma321-normal-curves-areas.qmd \
   ma322-quiz5.qmd \
 	ma322-quiz5-review.qmd \
 	ma322-quiz5-review-solutions.qmd

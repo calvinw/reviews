@@ -1,0 +1,154 @@
+---
+format:
+  pdf:
+    fontsize: 12pt
+    geometry:
+      - margin=1in
+    pagestyle: empty
+execute:
+  echo: false
+fig-pos: "H"
+---
+
+```{python}
+#| include: false
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+# Set global parameters once at the start
+plt.rcParams['figure.dpi'] = 60 
+plt.rcParams['font.size'] = 9 
+
+def plot_normal_area(mean, std, value, right_tail=True, standardized=False, title="", x_label=""):
+    
+    # Create new figure and axes
+    fig, ax = plt.subplots(figsize=(5,3))
+    
+    x = np.linspace(mean - 4*std, mean + 4*std, 1000)
+    y = norm.pdf(x, mean, std)
+    
+    ax.plot(x, y, 'b-', lw=2)
+    
+    if right_tail:
+        ax.fill_between(x, y, where=(x >= value), alpha=0.3)
+    else:
+        ax.fill_between(x, y, where=(x <= value), alpha=0.3)
+    
+    y_at_value = norm.pdf(value, mean, std)
+    ax.vlines(x=value, ymin=0, ymax=y_at_value, color='r', linestyle='--')
+    
+    max_y = max(y)
+    label_y = -max_y * 0.05
+    
+    if x_label:
+        ax.text(value, label_y, x_label, horizontalalignment='center')
+    
+    ax.set_title(title)
+    ax.set_xlabel('z' if standardized else 'x')
+    ax.set_yticklabels([])  # Remove y-axis labels
+    ax.grid(True, alpha=0.3)
+    
+    ax.set_ylim(label_y * 1.5, max_y * 1.1)
+```
+
+# Ma321 Normal Curves In Class Assignment
+
+For problems 1-6 below, draw the graphs for the problem. Label each as one of
+these types as well:
+
+- Left Tail Area x-distribution
+- Left Tail Area z-distribution
+- Right Tail Area x-distribution
+- Right Tail Area z-distribution
+- Backwards Right Tail Area
+- Backwards Left Tail Area
+
+### Questions 
+
+1. If the mean is 50 and the standard deviation is 10, what x-value corresponds to the bottom 5% of the data?
+
+**Solution**
+
+_Backwards Left Tail Area_
+
+```{python}
+#| fig-align: center 
+#| fig-pos: "H" 
+plot_normal_area(50, 10, norm.ppf(0.10, 50, 10), False, False, 
+                 "Find x-value that gives bottom 5% of data with μ=50,σ=10", 
+                 "x=?")
+```
+
+2. For a standard normal curve, what is the chance that z>0.8?
+
+**Solution**
+
+_Right Tail Area z-distribution_
+
+```{python}
+#| fig-align: center 
+#| fig-pos: "H" 
+plot_normal_area(0, 1, 0.8, True, True, 
+                 "Find chance z > 0.8 for Standard Normal", 
+                 "z=0.8")
+```
+
+3. For a normal demand curve with a mean of 60 and a standard deviation of 10, what is the chance that demand is less than 45?
+
+**Solution**
+
+_Left Tail Area x-distribution_
+
+
+```{python}
+#| fig-align: center 
+#| fig-pos: "H" 
+plot_normal_area(60, 10, 45, False, False, 
+                 "Find chance x < 45 when μ=60, σ=10", 
+                 "x=45")
+```
+
+4. For a standard normal curve, what is the chance that z is less than −1.5?
+
+**Solution**
+
+_Left Tail Area z-distribution_
+
+
+```{python}
+#| fig-pos: "H" 
+#| fig-align: center 
+plot_normal_area(0, 1, -1.5, True, True, 
+                 "Find chance z < -1.5 for Standard Normal", 
+                 "z=-1.5")
+```
+
+5. For a normal demand curve with a mean of 75 and a standard deviation of 15, what is the chance that demand is greater than 90?
+
+**Solution**
+
+_Right Tail Area x-distribution_
+
+```{python}
+#| fig-pos: "H" 
+#| fig-align: center 
+plot_normal_area(75, 15, 90, True, False, 
+                 "Find chance x > 90 when μ=75, σ=15", 
+                 "x=90")
+```
+
+6. If the mean is 70 and the standard deviation is 15, find the top 1% of the data.
+
+**Solution**
+
+_Backwards Right Tail Area_
+
+```{python}
+#| fig-pos: "H" 
+#| fig-align: center 
+plot_normal_area(70, 15, norm.ppf(0.99, 70, 15), True, False, 
+                 "Find x-value that gives top 1% of data with μ=70,σ=15", 
+                 "x=?")
+```
+
