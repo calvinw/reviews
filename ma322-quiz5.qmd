@@ -1,0 +1,95 @@
+---
+format:
+  pdf:
+    fontsize: 12pt
+    geometry:
+      - margin=1in
+    pagestyle: empty
+---
+
+# Ma322 Quiz 5 
+
+1. True or False
+
+    a) Prompt engineering is related to training a large language model.
+    b) Simpler prompts always lead to better results from LLMs.
+    c) Even with effective prompts, LLMs can still generate outputs that contain factual errors.
+
+2. Chain of thought prompting helps improve responses by
+
+    a) Giving the AI direct instructions to follow
+    b) Supplying a large number of examples
+    c) Encouraging the AI to explain its reasoning step by step
+    d) Shortening the prompts for better processing speed
+
+3. What does the following code print out when executed?
+
+    ```python
+    template="The {weather} in {country} falls mainly on the {thing}"
+    prompt=template.format(weather="Rain", country="Spain",  thing="Plain")
+    print(prompt)
+    prompt=template.format(country="weather", thing="country", weather="thing")
+    print(prompt)
+    ```
+4. Prompt chaining is particularly useful for tasks that
+
+    a) Require only one step to complete
+    b) Involve multiple interconnected steps
+    c) Are highly creative and open-ended
+    d) Have predefined answers
+
+5. When using roles or personas in prompts, which is true?
+
+    a) It always results in the AI giving factual information
+    b) It can help shape the tone, style, and perspective of the response
+    c) It is only useful for creative writing
+    d) It is a form of few-shot prompting
+
+:::{.content-visible when-format="pdf"}
+\newpage
+:::
+
+6. Prompting with Template Variables. Provide the code indicated.
+
+    a) Create a template string using a template variable `{place}` for asking
+    the LLM to give you the capital of `{place}`.
+
+    ```python
+    template= CODE
+    ```
+
+    b) Evaluate your template with using the string “Florida”
+
+    ```python
+    prompt=template.format(CODE)  
+    ```
+         
+    c) Call `get_completion` to get the response from the LLM
+
+
+    ```python
+    response = get_completion(CODE)
+    ```
+         
+    d) Print out the prompt and completion.  
+
+    ```python
+    CODE
+    ```
+
+    e) Add another template variable called `{num}` to the template above and
+    ask the LLM to provide you with `num` facts about the capital that you
+    specified with `{place}`.  
+
+    ```python
+    template = CODE
+    ```
+
+    f) Evaluate your template with place as “Florida” and the number 3.  
+    Save it in the `prompt` variable. Print out the prompt.
+
+    ```python
+    prompt=template.format(CODE)
+    CODE
+    ```
+

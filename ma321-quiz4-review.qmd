@@ -7,6 +7,7 @@ format:
     pagestyle: empty
 ---
 
+
 # Ma321 Quiz 4 Review
 
 For problems 1-9 below, draw the graphs for the problem. Label each as one of
@@ -22,7 +23,7 @@ these types as well:
 ### Questions 
 
 1. For a normal distribution with mean 70 and standard deviation 15, what is
-the probability that a value is greater than 95?
+the chance that x is greater than 95?
 
 2. With a mean of 120 and standard deviation of 25, what value marks the bottom
 15% of the data?
@@ -30,7 +31,7 @@ the probability that a value is greater than 95?
 3. For a standard normal curve, find the chance that z > -1.96.
 
 4. For a normal distribution with mean 45 and standard deviation 8, what is the
-probability that a value falls below 35?
+chance that a value falls below 35?
 
 5. For a standard normal distribution, find chance that z < 1.8
 

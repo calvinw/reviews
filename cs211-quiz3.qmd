@@ -1,0 +1,89 @@
+---
+format:
+  pdf:
+    fontsize: 12pt
+    geometry:
+      - margin=1in
+    pagestyle: empty
+---
+
+# CS211 Quiz 3 
+
+## True/False
+
+1. Vector embeddings maintain the exact meaning of the original data while
+   reducing its dimensionality.
+2. Semantic similarity can be defined for words, or sentences, or paragraphs or
+   even entire documents.
+3. FLUX can generate images without any text prompt.
+4. In semantic search, documents with similar meanings but different words can
+   still be matched effectively.
+5. The dimension of a vector embedding for a string must always match the input
+   data in number of words.
+
+## Multiple Choice
+
+6. Which statement about vector embeddings is correct?
+   a) They can only be created from text data
+   b) They can only be used for image processing
+   c) They always preserve 100% of the original information
+   d) They convert high-dimensional data into fixed-length numerical vectors
+
+7. In semantic search, what is the primary advantage of using vector embeddings?
+   a) They require less storage space than the original text
+   b) They enable matching based on meaning rather than exact keywords
+   c) They process queries faster than traditional search
+   d) They only work with structured data
+
+8. When using FLUX for image generation, which is true?
+   a) It can only generate photorealistic images
+   b) It requires both positive and negative prompts
+   c) It uses text prompts to guide image creation
+   d) It can only modify existing images
+
+9. What is the main purpose of calculating similarity between embeddings?
+   a) To reduce storage requirements
+   b) To compress the original data
+   c) To measure semantic similarity between items
+   d) To encrypt sensitive information
+
+:::{.content-visible when-format="pdf"}
+\newpage
+:::
+
+## DataFrames
+
+10. Consider the following code:
+
+    What will be printed from this code?
+
+    ```python
+    import pandas as pd
+    data = {
+        'name': ['Alice', 'Bob', 'Charlie'],
+        'age': [25, 30, 35],
+        'city': ['NY', 'LA', 'SF']
+    }
+    df = pd.DataFrame(data)
+    print("Original DataFrame:")
+    print(df)
+    df = df.drop('name', axis=1)
+    df.iloc[1, 1] = 'NY' 
+    print("\nModified DataFrame:")
+    print(df)
+    ```
+
+11. Given the following DataFrame:
+
+    ```python
+    import pandas as pd
+    data = {
+        'name': ['Alice', 'Bob', 'Charlie'],
+        'age': [25, 30, 35]
+    }
+    df = pd.DataFrame(data)
+    ```
+
+    Write code to add a new column called 'grade' with values ['A', 'B', 'A']
+    and print the resulting DataFrame.
+

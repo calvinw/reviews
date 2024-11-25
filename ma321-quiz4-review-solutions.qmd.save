@@ -1,0 +1,161 @@
+---
+format:
+  pdf:
+    fontsize: 12pt
+    geometry:
+      - margin=1in
+    pagestyle: empty
+---
+
+```{python}
+#| include: false
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+def plot_normal_area(mean, std, value, right_tail=True, standardized=False, title="", x_label=""):
+    x = np.linspace(mean - 4*std, mean + 4*std, 1000)
+    y = norm.pdf(x, mean, std)
+    
+    fig, ax = plt.subplots(figsize=(4,2))
+    plt.rcParams['figure.dpi']=150
+    plt.rcParams['font.size'] = 8 
+
+    ax.plot(x, y, 'b-', lw=2)
+    
+    if right_tail:
+        ax.fill_between(x, y, where=(x >= value), alpha=0.3)
+    else:
+        ax.fill_between(x, y, where=(x <= value), alpha=0.3)
+    
+    y_at_value = norm.pdf(value, mean, std)
+    ax.vlines(x=value, ymin=0, ymax=y_at_value, color='r', linestyle='--')
+    
+    max_y = max(y)
+    label_y = -max_y * 0.05
+    
+    if x_label:
+        ax.text(value, label_y, x_label, horizontalalignment='center')
+    
+    ax.set_title(title)
+    ax.set_xlabel('z' if standardized else 'x')
+    ax.set_yticklabels([])  # Remove y-axis labels
+    ax.grid(True, alpha=0.3)
+    
+    ax.set_ylim(label_y * 1.5, max_y * 1.1)
+```
+
+# Ma321 Quiz 4 Review
+
+For problems 1-9 below, draw the graphs for the problem. Label each as one of
+these types as well:
+
+- Left Tail Area x-distribution
+- Left Tail Area z-distribution
+- Right Tail Area x-distribution
+- Right Tail Area z-distribution
+- Backwards Right Tail Area
+- Backwards Left Tail Area
+
+### Questions 
+
+1. For a normal distribution with mean 70 and standard deviation 15, what is
+the chance that x is greater than 95?
+
+**Solution**
+
+```{python}
+#| fig-align: center 
+#| echo: false
+plot_normal_area(70, 15, 95, True, False, "Chance x > 95 with μ=70, σ=15", "x=95")
+```
+
+2. With a mean of 120 and standard deviation of 25, what value marks the bottom
+15% of the data?
+
+**Solution**
+
+```{python}
+#| fig-align: center 
+#| echo: false
+plot_normal_area(120, 25, norm.ppf(0.15, 120, 25), False, False, "Lower 15% of data with μ=120, σ=25", "x=?")
+```
+
+3. For a standard normal curve, find the chance that z > -1.96.
+
+**Solution**
+
+```{python}
+#| fig-align: center 
+#| echo: false
+plot_normal_area(0, 1, -1.96, True, True, "Chance z > -1.96 for Standard Normal", "z=-1.96")
+```
+
+4. For a normal distribution with mean 45 and standard deviation 8, what is the
+chance that a value falls below 35?
+
+**Solution**
+
+```{python}
+#| fig-align: center 
+#| echo: false
+plot_normal_area(45, 8, 35, False, False, "Chance x < 35 with μ=45, σ=8", "x=35")
+```
+
+5. For a standard normal distribution, find chance that z < 1.8
+
+**Solution**
+
+```{python}
+#| fig-align: center 
+#| echo: false
+plot_normal_area(0, 1, 1.8, False, True, "Chance z < 1.8 for Standard Normal", "z=1.8")
+```
+
+6. In a normal distribution with mean 200 and standard deviation of 30, what
+value marks the top 10% of the data?
+
+**Solution**
+
+```{python}
+#| fig-align: center 
+#| echo: false
+plot_normal_area(200, 30, norm.ppf(0.90, 200, 30), True, False, "Top 10% of data with μ=200, σ=30", "x=?")
+```
+
+For problems 7, 8, and 9 below, consider a product with monthly demand that
+follows a normal distribution with mean 55 units and standard deviation 12
+units. You can restock the item at the beginning of the month but you cannot
+order more till the next month.
+
+7. If you need to have a 95% service level what level should you restock to at
+the beginning of the month?
+
+**Solution**
+
+```{python}
+#| fig-align: center 
+#| echo: false
+plot_normal_area(55, 12, norm.ppf(0.95, 55, 12), False, False, "95% Service Level with μ=55, σ=12", "x=?")
+```
+
+8. If you need to stock to 70 at the beginning of the month, what would be the
+service level?
+
+**Solution**
+
+```{python}
+#| fig-align: center 
+#| echo: false
+plot_normal_area(55, 12, 70, False, False, "Service Level for stock=70 with μ=55, σ=12", "x=70")
+```
+
+9. If you have a service factor of z=1.23, what service level does this
+provide?
+
+**Solution**
+
+```{python}
+#| fig-align: center 
+#| echo: false
+plot_normal_area(0, 1, 1.23, False, True, "Service Level for z=1.23", "z=1.23")
+```

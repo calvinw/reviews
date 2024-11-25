@@ -1,0 +1,52 @@
+---
+format:
+  pdf:
+    fontsize: 12pt
+    geometry:
+      - margin=1in
+    pagestyle: empty
+---
+
+# Ma321 Quiz 4
+
+For problems 1-9 below, draw the graphs for the problem. Label each as one of
+these types as well:
+
+- Left Tail Area x-distribution
+- Left Tail Area z-distribution
+- Right Tail Area x-distribution
+- Right Tail Area z-distribution
+- Backwards Right Tail Area
+- Backwards Left Tail Area
+
+### Questions
+
+1. With a mean of 60 and standard deviation of 5, what value separates the
+   bottom 20% from the top 80% of the data?
+
+2. For a standard normal distribution, what is z is greater than 1.5.
+
+3. If test scores are normally distributed with mean 75 and standard deviation
+   10, what is the probability of scoring above 90?
+
+4. For a standard normal curve, find the chance that z < -1.65
+
+5. If heights are normally distributed with mean 68 inches and standard
+   deviation 3 inches, what height represents the bottom 5% of the population?
+
+6. For a normal demand curve with mean 150 and standard deviation 25, what is
+   the probability that demand is less than 125?
+
+For problems 7, 8, and 9 below, consider a product with monthly demand that
+follows a normal distribution with mean 80 units and standard deviation 15
+units.You can restock the item at the beginning of the month but you cannot
+order more till the next month.
+
+7. If your manager wants to maintain a 90% service level, what should your
+   monthly stocking level be?
+
+8. If you currently stock 95 units at the beginning of each month, what service
+   level are you providing?
+
+9. A colleague suggests using a service factor of z=2.05. What service level
+   would this provide?
