@@ -13,6 +13,9 @@ MD_SOURCES = \
 	ma322-quiz5-review.qmd \
 	ma322-quiz5-review-solutions.qmd
 
+MD_SOURCES = \
+  ma322-quiz5.qmd
+
 # Generate target lists
 HTML_TARGETS = $(MD_SOURCES:.qmd=.html)
 PDF_TARGETS = $(MD_SOURCES:.qmd=.pdf)
